@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Footer from './Footer'
-import AddTodo from '../containers/AddTodo'
-import VisibleTodoList from '../containers/VisibleTodoList'
+import AddTodo from './AddTodo'
+import VisibleTodoList from './VisibleTodoList'
 
-const App = () => (
-  <div>
-    <AddTodo />
-    <VisibleTodoList />
-    <Footer />
-  </div>
-)
+class App extends Component {
 
+    render() {
+        return (
+            <div>
+                <AddTodo/>
+                <Footer/>
+                <VisibleTodoList/>
+            </div>
+        )
+    }
+
+    componentDidMount() {
+        fetch('http://dummy.restapiexample.com/api/v1/employees')
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({ Todos : data })
+            })
+            .catch(console.log)
+    }
+}
 export default App

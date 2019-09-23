@@ -1,6 +1,8 @@
+import {constant} from "../constants/constants";
+
 let nextTodoId = 0
 export const addTodo = text => ({
-  type: 'ADD_TODO',
+  type: constant.ADD_TODO,
   id: nextTodoId++,
   text
 })
@@ -11,12 +13,11 @@ export const setVisibilityFilter = filter => ({
 })
 
 export const toggleTodo = id => ({
-  type: 'TOGGLE_TODO',
+  type: constant.TOGGLE_TODO,
   id
 })
 
-export const VisibilityFilters = {
-  SHOW_ALL: 'SHOW_ALL',
-  SHOW_COMPLETED: 'SHOW_COMPLETED',
-  SHOW_ACTIVE: 'SHOW_ACTIVE'
-}
+export const clearCompleted = id => ({
+  type: 'CLEAR_COMPLETED',
+  id
+})
